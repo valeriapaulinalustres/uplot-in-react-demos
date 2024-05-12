@@ -88,5 +88,5 @@ export default function MyBrushChart({
   }, [data, basicOpts]);
 
 
-  return <div ref={brushRef} className="myBasicChart"></div>;
+  return <div ref={brushRef} ></div>;
 }

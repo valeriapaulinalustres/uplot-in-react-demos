@@ -47,5 +47,5 @@ export default function MyBasicChart({ data, series }) {
     }
   }, [data, basicOpts]);
 
-  return <div ref={basicRef} className="myBasicChart"></div>;
+  return <div ref={basicRef} ></div>;
 }

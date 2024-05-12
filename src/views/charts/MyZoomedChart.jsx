@@ -7,10 +7,6 @@ export default function MyZoomeduZoomed({ data, series, scaleFromBrush }) {
   let uZoomed;
 
 
-//  cursor: {drag: {x:false, y:false}},
-
-  
-
   const basicOpts = {
     width: 800,
     height: 200,
@@ -62,5 +58,5 @@ export default function MyZoomeduZoomed({ data, series, scaleFromBrush }) {
     }
   }, [data, basicOpts, scaleFromBrush]);
 
-  return <div ref={zoomedRef} className="myBasicuZoomed"></div>;
+  return <div ref={zoomedRef} ></div>;
 }

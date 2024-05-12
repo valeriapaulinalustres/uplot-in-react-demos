@@ -3,10 +3,11 @@ import "../../../src/App.css";
 import "uplot/dist/uPlot.min.css";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function RealTime() {
   const [data, setData] = useState([[], [], [], []]);
-  const [play, setPlay] = useState(true)
+  const [play, setPlay] = useState(true);
 
   const series = [
     {
@@ -25,6 +26,12 @@ export default function RealTime() {
       stroke: "green",
     },
   ];
+
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate("/");
+  };
 
   // Función para agregar un nuevo elemento a cada array
   function agregarElemento() {
@@ -54,35 +61,38 @@ export default function RealTime() {
     return () => clearInterval(intervalId);
   }, []); // Se ejecuta solo una vez al montar el componente
 
-// -- end of chart configuration --/
+  // -- end of chart configuration --/
 
-//New state for data in pause
-const [dataOnPause, setDataOnPause] = useState([])
+  //New state for data in pause
+  const [dataOnPause, setDataOnPause] = useState([]);
 
   //Handle Play and Pause
-  function handlePause (){
+  function handlePause() {
     const dataCopy = JSON.parse(JSON.stringify(data)); // Realizar una copia profunda de data, porque si se hace setDataOnPause([...data]), dataOnPause tiene la misma referencia que data y se sigue actualizando en cada segundo
     setDataOnPause(dataCopy);
-setPlay(false)
+    setPlay(false);
   }
 
-function handlePlay () {
-  setDataOnPause([])
-  setPlay(true)
-}
+  function handlePlay() {
+    setDataOnPause([]);
+    setPlay(true);
+  }
 
-console.log(dataOnPause)
+  console.log(dataOnPause);
   return (
-    <div>
-      {
-        play ?
-        <Button func={handlePause} text={'Pausar'}/>
-:
-<Button func={handlePlay} text={'Poner Play'}/>
+    <div className="container">
+      <div className="chartContainer">
+        <MyBasicChart data={play ? data : dataOnPause} series={series} />
+      </div>
+      <div className="buttonsContainerRow">
 
-
-      }
-      <MyBasicChart data={play ? data : dataOnPause} series={series} className="basic" />
+      {play ? (
+        <Button func={handlePause} text={"⏸️"} classStyle={"arrowButton"}/>
+      ) : (
+        <Button func={handlePlay} text={"▶️"} classStyle={"arrowButton"}/>
+      )}
+      <Button classStyle={"arrowButton"} func={handleBack} text={"⬅️"} />
+      </div>
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import MyBrushChart from "./MyBrushChart";
 import MyZoomedChart from "./MyZoomedChart";
+import Button from "../../components/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function Brush() {
   const data = [
@@ -33,13 +35,23 @@ export default function Brush() {
     },
   ];
 
+  const navigate = useNavigate()
+
+  const handleBack = () => {
+    navigate('/');
+  };
+
   return (
-    <div>
+    <div className="container">
+      <div className="chartContainer">
+
       <MyZoomedChart
         data={data}
         series={series}
         scaleFromBrush={scaleFromBrush}
       />
+      </div>
+      <div className="chartContainer"> 
       <MyBrushChart
         data={data}
         series={series}
@@ -51,6 +63,8 @@ export default function Brush() {
         setWindowMin={setWindowMin}
      
       />
+      </div>
+      <Button classStyle={"arrowButton"} func={handleBack} text={"⬅️"}/>
     </div>
   );
 }
