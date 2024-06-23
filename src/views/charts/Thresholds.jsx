@@ -3,9 +3,10 @@ import '../../../src/App.css'
 import 'uplot/dist/uPlot.min.css';
 import Button from "../../components/Button";
 import { useNavigate } from 'react-router-dom';
-import { data, series } from "../../utils/data";
+import { dataAxis, seriesAxis,  } from "../../utils/data";
+import MyThresholdsChart from "./chart_component/MyThresholdsChrat";
 
-export default function Basic () {
+export default function Thresholds () {
 
   const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ export default function Basic () {
       <div className="container">
         <div className="chartContainer">
 
-        <MyBasicChart data={data} series={series}/>
+        <MyThresholdsChart dataAxis={dataAxis} seriesAxis={seriesAxis}/>
         </div>
         <Button classStyle={"arrowButton"} func={handleBack} text={"⬅️"}/>
       </div>

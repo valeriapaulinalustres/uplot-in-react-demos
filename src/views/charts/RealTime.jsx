@@ -1,31 +1,15 @@
-import MyBasicChart from "./MyBasicChart";
+import MyBasicChart from "./chart_component/MyBasicChart";
 import "../../../src/App.css";
 import "uplot/dist/uPlot.min.css";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import { series } from "../../utils/data";
 
 export default function RealTime() {
   const [data, setData] = useState([[], [], [], []]);
   const [play, setPlay] = useState(true);
 
-  const series = [
-    {
-      label: "x",
-    },
-    {
-      label: "A",
-      stroke: "red",
-    },
-    {
-      label: "B",
-      stroke: "yellow",
-    },
-    {
-      label: "C",
-      stroke: "green",
-    },
-  ];
 
   const navigate = useNavigate();
 

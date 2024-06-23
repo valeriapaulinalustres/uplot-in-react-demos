@@ -6,9 +6,12 @@ export default function MyBasicChart({ data, series }) {
 
   let uBasic;
 
+
+
   const basicOpts = {
     width: 800,
-    height: 200,
+    height: 500,
+    
     title: "Basic Chart",
     id: "U",
     class: "uplotChart",
@@ -41,6 +44,7 @@ export default function MyBasicChart({ data, series }) {
     if (basicRef.current) {
       // Inits chart
       uBasic = new uPlot(basicOpts, data, basicRef.current);
+
 
       // Destroy chart when component is unmounted
       return () => uBasic.destroy();

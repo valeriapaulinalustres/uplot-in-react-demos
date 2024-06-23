@@ -1,11 +1,12 @@
-import MyBasicChart from "./chart_component/MyBasicChart";
+
 import '../../../src/App.css'
 import 'uplot/dist/uPlot.min.css';
 import Button from "../../components/Button";
 import { useNavigate } from 'react-router-dom';
-import { data, series } from "../../utils/data";
+import { largeData, series } from "../../utils/data";
+import MyFlagsChart from "./chart_component/MyFlagsChart";
 
-export default function Basic () {
+export default function Flags () {
 
   const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ export default function Basic () {
       <div className="container">
         <div className="chartContainer">
 
-        <MyBasicChart data={data} series={series}/>
+        <MyFlagsChart data={largeData} series={series}/>
         </div>
         <Button classStyle={"arrowButton"} func={handleBack} text={"⬅️"}/>
       </div>
